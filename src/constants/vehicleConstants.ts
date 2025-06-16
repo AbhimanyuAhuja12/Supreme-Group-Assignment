@@ -37,8 +37,8 @@ const FeaturedData: Record<VehicleType, FeatureItem[]> = {
     ],
     commercial: [
         { 
-            title: "Complete body", 
-            image: "/assets/images/commercial-full-body.jpg", 
+            title: "Complete Body", 
+            image: "", 
             video: "/assets/videos/commercial-vehicles/Alpha.mp4" 
         }
     ],

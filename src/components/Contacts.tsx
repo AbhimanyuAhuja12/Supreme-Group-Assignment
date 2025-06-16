@@ -1,4 +1,3 @@
-// 2. Updated ContactUs Component
 import React from "react";
 import useContact from "@/hooks/useContacts";
 import Input from "../ui/Input";
@@ -122,14 +121,12 @@ const ContactUs: React.FC = () => {
               <Button type="submit" isLoading={isLoading} label="Submit" />
             </form>
 
-            {/* Success message only */}
             {formStatus && formStatus.includes("successfully") && (
               <div className="mt-4 p-4 bg-green-500 text-white rounded-md font-semibold">
                 ✅ {formStatus}
               </div>
             )}
 
-            {/* Error message for server errors */}
             {formStatus && formStatus.includes("wrong") && (
               <div className="mt-4 p-4 bg-red-500 text-white rounded-md font-semibold">
                 ❌ {formStatus}
