@@ -1,3 +1,4 @@
+// 1. Updated Input Component (remove required attribute completely)
 import React from 'react';
 
 interface InputProps {
@@ -27,7 +28,6 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      required
       className={`w-full text-lg bg-transparent text-white border-b-2 border-white/30 py-2 px-1 focus:outline-none focus:border-white placeholder-white ${className}`}
     />
   ) : (
@@ -37,7 +37,6 @@ const Input: React.FC<InputProps> = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      required
       className={`w-full text-lg bg-transparent text-white border-b-2 border-white/30 py-2 px-1 focus:outline-none focus:border-white placeholder-white ${className}`}
     />
   );

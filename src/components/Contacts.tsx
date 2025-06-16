@@ -1,13 +1,13 @@
-import React from 'react';
-
-import useContact from '../hooks/useContacts';
-
-import Input from '../ui/Input';
-import Button from '../ui/Button';
+// 2. Updated ContactUs Component
+import React from "react";
+import useContact from "@/hooks/useContacts";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 const ContactUs: React.FC = () => {
   const {
     formValues,
+    formErrors,
     formStatus,
     isLoading,
     handleChange,
@@ -29,57 +29,112 @@ const ContactUs: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-semibold">Phone :</h3>
-                <a href="tel:+912225208822" className="inline-block text-white/90 hover:text-white relative w-fit group">
-                  <span className="border-b border-transparent group-hover:border-white transition-all duration-300">+91 22 25208822</span>
+                <a
+                  href="tel:+912225208822"
+                  className="inline-block text-white/90 hover:text-white relative w-fit group"
+                >
+                  <span className="border-b border-transparent group-hover:border-white transition-all duration-300">
+                    +91 22 25208822
+                  </span>
                 </a>
               </div>
               <div>
                 <h3 className="font-semibold">Email :</h3>
-                <a href="mailto:info@supremegroup.co.in" className="inline-block text-white/90 hover:text-white relative w-fit group">
-                  <span className="border-b border-transparent group-hover:border-white transition-all duration-300">info@supremegroup.co.in</span>
+                <a
+                  href="mailto:info@supremegroup.co.in"
+                  className="inline-block text-white/90 hover:text-white relative w-fit group"
+                >
+                  <span className="border-b border-transparent group-hover:border-white transition-all duration-300">
+                    info@supremegroup.co.in
+                  </span>
                 </a>
               </div>
             </div>
           </div>
 
           <div className="flex-1 w-full">
-            <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
-              <Input
-                type="text"
-                name="fullName"
-                value={formValues.fullName}
-                onChange={handleChange}
-                placeholder="Full Name"
-                required
-              />
-              <Input
-                type="email"
-                name="email"
-                value={formValues.email}
-                onChange={handleChange}
-                placeholder="Email"
-                required
-              />
-              <Input
-                type="text"
-                name="company"
-                value={formValues.company}
-                onChange={handleChange}
-                placeholder="Company"
-                required
-              />
-              <Input
-                textarea
-                type="text"
-                name="message"
-                value={formValues.message}
-                onChange={handleChange}
-                placeholder="Message"
-                required
-              />
-                  <Button isLoading={isLoading} label="Submit" />
+            <form
+              className="flex flex-col gap-6"
+              onSubmit={handleSubmit}
+              noValidate
+            >
+              <div>
+                <Input
+                  type="text"
+                  name="fullName"
+                  value={formValues.fullName}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                />
+                {formErrors.fullName && (
+                  <div className="mt-1 text-red-300 text-sm">
+                    {formErrors.fullName}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="email"
+                  name="email"
+                  value={formValues.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                />
+                {formErrors.email && (
+                  <div className="mt-1 text-red-300 text-sm">
+                    {formErrors.email}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  name="company"
+                  value={formValues.company}
+                  onChange={handleChange}
+                  placeholder="Company"
+                />
+                {formErrors.company && (
+                  <div className="mt-1 text-red-300 text-sm">
+                    {formErrors.company}
+                  </div>
+                )}
+              </div>
+
+              <div>
+                <Input
+                  textarea
+                  type="text"
+                  name="message"
+                  value={formValues.message}
+                  onChange={handleChange}
+                  placeholder="Message"
+                />
+                {formErrors.message && (
+                  <div className="mt-1 text-red-300 text-sm">
+                    {formErrors.message}
+                  </div>
+                )}
+              </div>
+
+              <Button type="submit" isLoading={isLoading} label="Submit" />
             </form>
-            {formStatus && <div className="mt-4 text-white text-lg">{formStatus}</div>}
+
+            {/* Success message only */}
+            {formStatus && formStatus.includes("successfully") && (
+              <div className="mt-4 p-4 bg-green-500 text-white rounded-md font-semibold">
+                ✅ {formStatus}
+              </div>
+            )}
+
+            {/* Error message for server errors */}
+            {formStatus && formStatus.includes("wrong") && (
+              <div className="mt-4 p-4 bg-red-500 text-white rounded-md font-semibold">
+                ❌ {formStatus}
+              </div>
+            )}
           </div>
         </div>
       </div>

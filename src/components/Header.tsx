@@ -25,11 +25,13 @@ const Header: React.FC = () => {
             >
               Contact Us
             </button>
-            <img
-              src="/assets/images/linked-in.svg"
-              alt="LinkedIn"
-              className="cursor-pointer w-6 h-6"
-            />
+            <a href="https://www.linkedin.com/in/abhimanyu-ahuja12/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/assets/images/linked-in.svg"
+                alt="LinkedIn"
+                className="cursor-pointer w-6 h-6"
+              />
+            </a>
             <img
               src="/assets/images/language.svg"
               alt="Language"
